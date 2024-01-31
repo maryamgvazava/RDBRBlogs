@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 
 
 <!-- ავტორიზაციის ნაწილი -->
     <section class="header">
-        <img class="logo" src="./images/LOGO.png" alt="">
+        <img class="logo" src="./images/icons/LOGO.png" alt="">
         <button class="login">შესვლა</button>
     </section>
 
 
 <div class="signInDiv " id="">
-    <div class="imgdiv"><img class="crossmark" src="./images/crossmark.svg" alt=""></div>
+    <div class="imgdiv"><img class="crossmark" src="./images/icons/crossmark.svg" alt=""></div>
     
     <p class="signtitle">შესვლა</p>
 <form class="signinForm" action="...">
@@ -28,7 +29,7 @@
   
     <br>
     <div class="errmsg">
-        <img class="warningicon" src="./images/info-circle.png">
+        <img class="warningicon" src="./images/icons/info-circle.png">
         <span>ელ-ფოსტა არ მოიძებნა</span>
     </div>
     <br>
@@ -41,9 +42,9 @@
 
 
 <div class="successDiv" id="">
-    <div class="imgdiv"><img class="crossmark" src="./images/crossmark.svg" alt=""></div>
+    <div class="imgdiv"><img class="crossmark" src="./images/icons/crossmark.svg" alt=""></div>
     
-   <img class="tickcircle" src="./images/tick-circle.png" alt="">
+   <img class="tickcircle" src="./images/icons/tick-circle.png" alt="">
    
    <p class="succsessMsg">წარმატებული ავტორიზაცია</p>
   
@@ -58,7 +59,7 @@
 
 <section class="coverSection">
     <p class="blogTitle">ბლოგი</p>
-    <img class="coverImg" src="./images/coverImg.png" alt="">
+    <img class="coverImg" src="./images/icons/coverImg.png" alt="">
 
 </section>
 
@@ -75,17 +76,157 @@
 </section>
 
 
+
+
 <section class="cardsSection">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-4"></div>
-
-            <div class="col col-lg-4"></div>
-
-            <div class="col col-lg-4"></div>
+        <div class="row cardRows">
+          <a href="./index2.html"></a>
+           
         </div>
     </div>
 </section>
+
     
+
+
+
+<!-- სარეგისტრაციო ფორმა -->
+
+
+<section class="regFormSection">
+    <h1 class="addBlog">ბლოგის დამატება</h1>
+    <div class="regForm">
+        
+    <p class="uploadImg">ატვირთეთ ფოტო</p>
+
+
+
+
+    <div class="uploadImgDiv">
+        <p class="imgName"></p>
+        <div class="uploadIMGsection">
+        <img class="folderAdd" src="./images/icons/folder-add.png" alt="">
+        <label for="cardimgtops">ჩააგდეთ ფაილი აქ ან <a id="imageFileLink" class="uploadSelect" href="#">აირჩიეთ ფაილი</a></label>
+        <input type="file" id="myImageInput" name="myImage" accept="image/png, image/gif, image/jpeg"/>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="container-fluid authorinfo">
+        <div class="row">
+            <div class="col-6 ">
+                <p class="author">ავტორი*</p>
+                <input class="focussTyle " type="text" name="" id="author" placeholder="შეიყვანეთ ავტორი">
+                <div class="namerestr">
+
+                    <ul>
+                        <li class="restrictions restr1">მინიმუმ 4 სიმბოლო</li>
+                        <li class="restrictions restr2">მინიმუმ ორი სიტყვა</li>
+                        <li class="restrictions restr3">მხოლოდ ქართული სიმბოლოები</li>
+                     
+                    </ul>
+                
+            </div>
+            </div>
+           
+            <div class="col-6">
+                <p class="cardHeader">სათაური*</p>
+                <input class="focussTyle " type="text" name="" id="cardHeader" placeholder="შეიყვანეთ სათაური">
+                <p class="restrictions namerestr restr4 ">* მინიმუმ 4 სიმბოლო</p>
+            </div>
+        </div>
+        </div>
+        <div class="descriptionBox">
+            <p class="descr">აღწერა*</p>
+            <input class="focussTyle " type="text" name="" id="enterDescr" placeholder="შეიყვანეთ აღწერა">
+        <p class="restrictions namerestr restr5">მინიმუმ 4 სიმბოლო</p>
+        </div>
+   
+
+
+
+
+<div class="container-fluid publisDateSec">
+    <div class="row ">
+        <div class="col-6 ">
+            <p class="publDate">გამოქვეყნების თარიღი*</p>
+            <input class="focussTyle " type="text" name="" id="publDate">
+        </div>
+
+        <div class="col-6 cathegoryDiv">
+            <p class="cathegory">კატეგორია*</p>
+            
+            <div id="cathegory">
+               
+                    <div class="sortBtnsDiv2">
+                    
+                </div>
+           
+                <img id="downarrow" src="./images/icons/arrow-down.png" alt="">
+                <span class="choosecategory">აირჩიეთ კატეგორია</span> 
+            </div>
+            
+        
+            <div id="buttonCollectionForSelect">
+                <div class="sortBtnsDivsel selectedButtonsDiv">
+                    <button class="cardButtons marketsel selectedButtons">მარკეტი</button>
+                    <button class=" cardButtons applsel selectedButtons">აპლიკაცია </button>
+                    <button class=" cardButtons AIsel selectedButtons">ხეოვნური ინტელექტი </button>
+                    <button class=" cardButtons UIsel selectedButtons">UI/UX </button>
+                    <button class="cardButtons researchsel selectedButtons">კვლევა </button>
+                    <button class="cardButtons figmasel selectedButtons">Figma </button>
+            </div>
+            
+
+
+            
+        </div>
+       
+    </div>
+
+<div class="container-fluid publisDateSec">
+    <div class="row">
+        <div class="col-6">
+            <p class="uploademail">ელ-ფოსტა</p>
+        <input class="focussTyle " type="email" name="" id="uploademail" placeholder="Example@redberry.ge">
+        <p class="restrictions namerestr restr6 ">მეილი უნდა მთავრდებოდეს @redberry.ge-ით</p>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="publishBtnDiv">
+    <button id="publishBtn">გამოქვეყნება</button>
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="app.js" defer></script>
 </body>
 </html>
+
+
