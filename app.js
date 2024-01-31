@@ -353,8 +353,6 @@ function renderCards() {
   cardRows.innerHTML = '';
   cardArray.forEach(cardInfo => {
     cardRows.innerHTML += cardInfo;
-
-
   });
 }
 
@@ -365,19 +363,89 @@ renderCards();
 
 
 
+// document.addEventListener('click', function(event) {
+//   const clickedElement = event.target;
+
+//   if (clickedElement.classList.contains("seeFullText")) {
+//     let selectedCard = clickedElement.closest('.card');
+//     let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+
+//     let cardBody = document.querySelectorAll('.card-body');
+    
+//     cardBody.forEach(cardBodyElement => {
+//       if (cardBodyElement !== selectedCard) {  // Skip the selected card itself
+//         let cardButtons = cardBodyElement.querySelector('.cardButtons');
+//         if (cardButtons) {
+//           let otherCardButtons = cardButtons.querySelectorAll('button');
+
+//           // Check for matching buttons
+//           selectedCardButtons.forEach(selectedButton => {
+//             if (Array.from(otherCardButtons).some(otherButton => otherButton.textContent === selectedButton.textContent)) {
+
+//               localStorage.setItem('matchedCards', JSON.stringify(cardBodyElement.closest('.card').outerHTML));
+//               // console.log("Match found with card:", cardBodyElement.closest('.card'));
+//             }
+//           });
+//         }
+//       }
+//     });
+
+//     localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
+//   }
+// });
+
+
+
+
+
+
 document.addEventListener('click', function(event) {
   const clickedElement = event.target;
-  console.log(clickedElement);
-  const classes = Array.from(clickedElement.classList);
-  if(classes.includes("seeFullText")){
-    let selctedCard = clickedElement.closest('.card').outerHTML
-     localStorage.setItem('ThisCard', JSON.stringify(selctedCard));
-    console.log(clickedElement.closest('.card').outerHTML)
+
+  if (clickedElement.classList.contains("seeFullText")) {
+    let selectedCard = clickedElement.closest('.card');
+    let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+
+    let cardBody = document.querySelectorAll('.card-body');
+
+    let matchedCardsSet = new Set();
+
+    cardBody.forEach(cardBodyElement => {
+      let cardButtons = cardBodyElement.querySelector('.cardButtons');
+      if (cardButtons && cardBodyElement !== selectedCard) {
+        let otherCardButtons = cardButtons.querySelectorAll('button');
+
+        // Check for matching buttons
+        let hasMatch = Array.from(otherCardButtons).some(otherButton => 
+          Array.from(selectedCardButtons).some(selectedButton =>
+            otherButton.textContent === selectedButton.textContent
+          )
+        );
+
+        if (hasMatch) {
+          matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML);
+        }
+      }
+    });
+
+    // Remove the selected card from the matched cards set
+    matchedCardsSet.delete(selectedCard.outerHTML);
+
+    // Convert the Set to an array and log the matching cards
+    let matchedCardsArray = Array.from(matchedCardsSet);
+
+    // Log matching cards
+    if (matchedCardsArray.length > 0) {
+      console.log("Matching cards found:", matchedCardsArray);
+      localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
+    }
+
+    localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
   }
 });
 
 
 
 
-})
+});
 

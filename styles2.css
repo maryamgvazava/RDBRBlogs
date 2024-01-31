@@ -1,0 +1,194 @@
+body{
+    background-color: rgba(103, 125, 125, 0.259);
+}
+.fullCard{
+display: flex;
+justify-content: center;
+width: 100%;
+height: 1000px;
+}
+
+.cardButtons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.similarContent{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(245, 245, 220, 0.388);
+    padding: 50px;
+}
+
+
+.marketsel,
+        .applsel,
+        .AIsel,
+        .UIsel,
+        .researchsel,
+        .figmasel{
+        padding: 8px 12px ;
+        border-radius: 30px;
+        gap: 8px !important;
+        margin: 8px ;
+        color: #ffff;
+        display: flex;
+        flex-wrap: nowrap !important;
+        height: 32px !important;
+        font-family: FiraGO;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: left;
+        border: none;
+      }
+
+      .fullCard > .card,
+      .fullCard > .card > .card-img-top {
+        width: 700px !important;
+        height: 500px !important;
+      }
+
+      .fullCard > .card > .card-body > .card-text{
+        height: auto !important;
+      }
+
+      .fullCard > .card > .card-body >.seeFullText{
+        display: none;
+    }
+
+
+
+
+
+
+      .marketsel{
+        background-color:rgba(255, 184, 47, 1);
+   
+       
+       }
+       
+
+      .applsel{
+        background: rgba(26, 199, 168, 1);
+    }
+    
+    
+  .AIsel{
+        background: rgba(183, 31, 221, 1);
+        width:auto;
+    }
+    
+   .UIsel{
+        background: rgba(220, 40, 40, 1)
+    }
+    
+    .researchsel{
+        background: rgba(96, 190, 22, 1)
+    }
+    
+    .figmasel{
+        background: rgba(26, 199, 168, 1)
+    }
+.blogTitle{
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+    }
+    
+    
+    .coverImg{
+    width: 624px;
+    height: 200px;
+    top: 144px;
+    left: 740px;
+    }
+    
+    .errmsg{
+        visibility: hidden;
+        font-size: 12px;
+        line-height: 20px;
+        color:rgba(234, 25, 25, 1);
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+    
+    .warningicon{
+        margin-right: 8px;
+    }
+    
+    .card-body{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .card{
+        border: none !important;
+        margin-bottom:56px ;
+    }
+    
+    .card-title{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    
+    .published{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(133, 133, 141, 1);
+    }
+    
+    .title{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    
+    .card-text{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        color: rgba(64, 64, 73, 1)
+    }
+    
+    .cardsSection{
+        padding: 64px 76px;
+    }
+    
+    .col{
+        display: flex;
+        justify-content: center;
+    }
+    
+
+
+    .similarContent > .card > .card-body >.card-text{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        color: rgba(64, 64, 73, 1)
+    }
+
+    .similarContent > .card > .card-body > .card-text {
+        max-height: 3.5em;
+        overflow: hidden;
+        position: relative;
+      }
+
+      
+      
+      .similarContent > .card > .card-body >.card-text::after {
+        content: '...'; 
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: white; 
+      }
