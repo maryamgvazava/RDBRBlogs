@@ -1,5 +1,4 @@
 // login form
-
 const login = document.querySelector('.login');
 const signInDiv = document.querySelector('.signInDiv')
 const crossmark = document.querySelectorAll(".crossmark");
@@ -13,6 +12,8 @@ const coverSection = document.querySelector('.coverSection')
 const sortBtnsSec = document.querySelector('.sortBtnsSec')
 const cardsSection = document.querySelector('.cardsSection')
 const test = document.querySelector('.test')
+
+
 
 let backgroundTransparency = function(color){
     let opacity = [header, coverSection, sortBtnsSec, cardsSection];
@@ -332,7 +333,7 @@ publishBtn.addEventListener('click', function () {
           <p class="title">${cardObject.title}</p>
           <div class="cardButtons">${cardObject.buttons}</div>
           <p class="card-text">${cardObject.description}</p>
-          <a class="seeFullText" target="_blank" href="index2.html">სრულად ნახვა <img src="./images/icons/Arrow.png" alt=""></a>
+          <a class="seeFullText" href="index2.html">სრულად ნახვა <img src="./images/icons/Arrow.png" alt=""></a>
         </div>
       </div>
     </div>
@@ -436,7 +437,6 @@ document.addEventListener('click', function(event) {
 
     // Log matching cards
     if (matchedCardsArray.length > 0) {
-      console.log("Matching cards found:", matchedCardsArray);
       localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
     }
 
@@ -449,3 +449,6 @@ document.addEventListener('click', function(event) {
 
 });
 
+localStorage.setItem('header', JSON.stringify(header.outerHTML));
+
+// localStorage.clear()

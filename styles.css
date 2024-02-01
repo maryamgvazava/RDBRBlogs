@@ -14,12 +14,7 @@
 body{
     margin: 0;
     padding: 0;
-    /* height: 1080px;
-    width: 1920px; */
-    /* position: relative;
-     */
-    
-   
+     background-color: rgba(243, 242, 250, 1);
 }
 
 
@@ -138,6 +133,10 @@ body{
     background-color: rgba(255, 255, 255, 1);
 }
 
+.card-img-top{
+    border-radius: 12px;
+}
+
 .crossmark{
     width: 24px;
     height: 24px;
@@ -216,7 +215,7 @@ border-radius: 30px;
 gap: 10px;
 font-weight: 500;
 line-height: 16px;
-border:none;
+border: none;
 margin-left: 24px;
 }
 
@@ -224,7 +223,6 @@ margin-left: 24px;
  background-color:rgba(255, 184, 47, 0.08);
  color: #D6961C;
  margin: 0;
-
 }
 
 .appl, .applsel{
@@ -262,7 +260,6 @@ font-weight: 700;
 line-height: 72px;
 letter-spacing: 0em;
 text-align: left;
-
 }
 
 
@@ -295,6 +292,8 @@ left: 740px;
 .card{
     border: none !important;
     margin-bottom:56px ;
+    border: solid #bcb1b13c 1px !important;
+    padding: 10px;
 }
 
 .card-title{
