@@ -33,8 +33,12 @@ leftArrow.addEventListener("click", function(){
 
 
 
-let newCard = JSON.parse(localStorage.getItem('ThisCard')) || [];
-fullCard.innerHTML = newCard;
+    let newCard = JSON.parse(localStorage.getItem('ThisCard')) || [];    fullCard.innerHTML = newCard;
+
+    
+
+
+    // localStorage.clear()
 
 
 
