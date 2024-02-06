@@ -133,6 +133,10 @@
   })
   
   
+
+
+
+
   
   
   
@@ -156,10 +160,80 @@
     const sortBtnsDivselbtn = sortBtnsDivsel.querySelectorAll('button')
     
   
-  
+
     
      
   document.addEventListener('DOMContentLoaded', function () {
+
+
+
+
+    function checkFields() {
+      // Check if all input fields have values
+      const allFieldsFilled = author.value.trim() !== '' &&
+                              cardHeader.value.trim() !== '' &&
+                              enterDescr.value.trim() !== '' &&
+                              publDate.value.trim() !== '' &&
+                              uploademail.value.trim() !== '' &&
+                              selectedFile !== '' && // Check if an image is uploaded
+                              btnssdiv2.querySelectorAll('button').length > 0; // Check if there are button elements in btnssdiv2
+  
+      // Update the style of the publish button
+      if (allFieldsFilled) {
+          publishBtn.disabled = false; // Enable the button
+          publishBtn.style.color = 'green'; // Set the color to green
+      } else {
+          publishBtn.disabled = true; // Disable the button
+          publishBtn.style.color = 'red'; // Set the color to red
+      }
+  }
+  
+  // Attach event listeners to input fields
+  author.addEventListener('keyup', checkFields);
+  cardHeader.addEventListener('keyup', checkFields);
+  enterDescr.addEventListener('keyup', checkFields);
+  publDate.addEventListener('keyup', checkFields);
+  uploademail.addEventListener('keyup', checkFields);
+  
+  // Call the function initially to set the initial state of the button
+  checkFields();
+  
+  // Add event listener for image upload
+  myImageInput.addEventListener('change', function() {
+      selectedFile = myImageInput.files[0];
+      checkFields(); // Check fields after image upload
+  });
+  
+  // Add event listener for button clicks in btnssdiv2
+  // btnssdiv2.addEventListener('click', checkFields);
+  
+
+// Create a new MutationObserver instance
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+      // Check if nodes were added or removed
+      if (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0) {
+          // Call the checkFields function to update the state of the publish button
+          checkFields();
+      }
+  });
+});
+
+// Configure the MutationObserver to watch for changes in the child nodes of btnssdiv2
+const observerConfig = { childList: true };
+
+// Start observing the DOM subtree of btnssdiv2
+observer.observe(btnssdiv2, observerConfig);
+
+// Call checkFields initially to set the initial state of the publish button
+checkFields();
+
+
+
+
+
+
+
   downarrow.addEventListener('click', function(){
       sortBtnsDivsel.classList.toggle('selectedButtonsDiv');
    
@@ -198,7 +272,8 @@
     return matchedButtons;
   
   }
-  
+console.log(btnssdiv2)
+
     
       function clearFields() {
           author.value = '';
@@ -250,33 +325,13 @@
         </div>
       </div>
     `;
-    // let cardRows = document.querySelector('.cardRows')
-    // Push cardInfo to cardArray
+
     cardArray.push(cardInfo);
     localStorage.setItem('cards', JSON.stringify(cardArray));
-    // renderCards();
-   
-      // cardArray.forEach(cardInfo => {
-      //   cardRows.innerHTML += cardInfo;
-      // });
     clearFields();
    
   });
-  
-  
- 
-  
-  // function renderCards() {
-  //   cardRows.innerHTML = '';
-  //   cardArray.forEach(cardInfo => {
-  //     cardRows.innerHTML += cardInfo;
-  //   });
-  // }
-  
-  
 
-  // renderCards();
-  
   
   
   publishBtn.addEventListener("click", function(){
