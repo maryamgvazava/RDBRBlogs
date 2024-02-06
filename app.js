@@ -24,10 +24,10 @@ for ( let el of opacity){
 }
 }
 
-// login.disabled = false;
+login.disabled = false;
 login.addEventListener('click', function(){
     signInDiv.style.display = 'flex';
-    // this.disabled = true
+    this.disabled = true
     backgroundTransparency("rgba(26, 26, 31, 0.024)")
 })
 for(let close of crossmark){
@@ -54,9 +54,6 @@ loginBtn.addEventListener('click', event => {
 
   const apiUrl = 'https://api.blog.redberryinternship.ge/api/login';
   const requestData = { email: emailInput.value }; 
-
-
-
 
 
   fetch(apiUrl, {
@@ -445,44 +442,44 @@ document.addEventListener('click', function(event) {
   const clickedElement = event.target;
 
   if (clickedElement.classList.contains("seeFullText")) {
-    let selectedCard = clickedElement.closest('.card');
-    let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+    let selectedCard = clickedElement.closest('.card'); // იმ ელემენტის ქარდი, რომელზეც ხდება კლიკი
+    let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button'); //იმ ქარდის ღილაები, რომელიც ავირჩიე
 
-    let cardBody = document.querySelectorAll('.card-body');
+    let cardBody = document.querySelectorAll('.card-body');  //ყველა ქარდის body
 
-    let matchedCardsSet = new Set();
+    let matchedCardsSet = new Set();  //
 
     cardBody.forEach(cardBodyElement => {
-      let cardButtons = cardBodyElement.querySelector('.cardButtons');
-      if (cardButtons && cardBodyElement !== selectedCard) {
-        let otherCardButtons = cardButtons.querySelectorAll('button');
+      let cardButtons = cardBodyElement.querySelector('.cardButtons'); //ყველა ქარდის ბოდიში არსებული ღილაკების div
+      if (cardButtons && cardBodyElement !== selectedCard) {  //თუ ყველა ქარდის ბოდიში არსებული ღილაკები და ყველა ქარდის body არ უდრის არჩეულ ქარდს
+        let otherCardButtons = cardButtons.querySelectorAll('button'); //ყველა ქარდის ბოდიში არსებული ღილაკების div-ში არსებული ღილაკები
 
         // Check for matching buttons
-        let hasMatch = Array.from(otherCardButtons).some(otherButton => 
-          Array.from(selectedCardButtons).some(selectedButton =>
-            otherButton.textContent === selectedButton.textContent
+        let hasMatch = Array.from(otherCardButtons).some(otherButton =>  //ყველა ღილაკების დივში არსებული ღილაკები
+          Array.from(selectedCardButtons).some(selectedButton => //იმ ქარდების ღილაკები რომელიც ავირჩიე
+            otherButton.textContent === selectedButton.textContent //თუ ემთხვევა ერთმანეთს
           )
         );
 
         if (hasMatch) {
-          matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML);
+          matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML); //მაშინ დაამატოს უახლოესი ქარდ ელემენტი matchedCardsSet-ში
         }
       }
     });
 
     // Remove the selected card from the matched cards set
-    matchedCardsSet.delete(selectedCard.outerHTML);
+    matchedCardsSet.delete(selectedCard.outerHTML); //matchedCardsSet -დანნ წაშალოს არჩეული ქარდის კოპი
 
     // Convert the Set to an array and log the matching cards
-    let matchedCardsArray = Array.from(matchedCardsSet);
+    let matchedCardsArray = Array.from(matchedCardsSet); // და სეთი გადააკეთოს მასივად
 
     // Log matching cards
     if (matchedCardsArray.length > 0) {
-      localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
+      localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray)); // და მასივი შეინახოს ლოკალურ მეხსიერებაში. 
     }
 
-    localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
-  console.log(selectedCard.outerHTML)
+    localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML)); //არჩეული ქარდი შეინახოს ლოკალურ მეხსიერებაში
+  
 }
 });
 
@@ -495,6 +492,6 @@ document.addEventListener('click', function(event) {
 
 
 
-localStorage.setItem('header', JSON.stringify(header.outerHTML));
+localStorage.setItem('header', JSON.stringify(header.outerHTML)); //ჰედერის სექცია შეინახოს ლოკალურ მეხსიერებაში
 
 // localStorage.clear()

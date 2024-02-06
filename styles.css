@@ -9,12 +9,14 @@
 
 *{
     font-family: 'FiraGO';
+    box-sizing: border-box !important;
 }
 
 body{
     margin: 0;
     padding: 0;
      background-color: rgba(243, 242, 250, 1);
+     box-sizing: border-box;
 }
 
 
@@ -191,6 +193,8 @@ line-height: 28px;
     justify-content: space-between;
     padding: 114px 76px 64px;
     background: rgba(243, 242, 250, 1);
+    flex-shrink: initial;
+    flex-wrap: wrap;
 }
 
 .sortBtnsSec{
@@ -268,7 +272,7 @@ text-align: left;
 
 
 .coverImg{
-width: 624px;
+max-width: 100%;
 height: 200px;
 top: 144px;
 left: 740px;

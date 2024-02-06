@@ -66,7 +66,7 @@
         reader.readAsDataURL(selectedFile);
       }
   
-        console.log(selectedFile)
+        // console.log(selectedFile)
     });
   
     imageFileLink.addEventListener('click', function(event) {

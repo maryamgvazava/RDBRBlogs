@@ -4,48 +4,23 @@ let header = document.querySelector('.header')
 let leftArrow = document.querySelector('.leftArrow');
 let nextBtn = document.querySelector('.nextBtn')
 
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-leftArrow.addEventListener("click", function(){
+  leftArrow.addEventListener("click", function(){
     window.location.href = 'index.html';
 
 })
 
-
-
-
-
-    let newCard = JSON.parse(localStorage.getItem('ThisCard')) || [];    fullCard.innerHTML = newCard;
+let newCard = JSON.parse(localStorage.getItem('ThisCard')) || [];    
+fullCard.innerHTML = newCard;
 
     
 
 
     // localStorage.clear()
 
-
-
-
-
-let headerSection = JSON.parse(localStorage.getItem('header')) || [];
-header.innerHTML = headerSection
+// let headerSection = JSON.parse(localStorage.getItem('header')) || [];
+// header.innerHTML = headerSection
 
 // localStorage.clear()
 // let similarContent = document.querySelector('.similarContent');
@@ -68,7 +43,9 @@ header.innerHTML = headerSection
 
 
     // Retrieve matched cards from localStorage
-    let matchedCards = JSON.parse(localStorage.getItem('matchedCards')) || [];
+let matchedCards = JSON.parse(localStorage.getItem('matchedCards')) || [];
+console.log(matchedCards)
+
     let similarContent = document.querySelector('.similarContent');
   
     // Function to render cards based on the current page
@@ -131,53 +108,116 @@ header.innerHTML = headerSection
 
 
 
+    
+   
+
+   
+
+    
+
+
     document.addEventListener('click', function(event) {
-        const clickedElement = event.target;
+      const existingCards = JSON.parse(localStorage.getItem('cards')) || [];
+      let cardArray = existingCards.slice();
+      let matchedCardsSet = new Set(); // Initialize a Set to store matched cards
       
-        if (clickedElement.classList.contains("seeFullText")) {
-          let selectedCard = clickedElement.closest('.card');
-          let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+      const clickedElement = event.target;
+
+
       
-          let cardBody = document.querySelectorAll('.card-body');
-      
-          let matchedCardsSet = new Set();
-      
-          cardBody.forEach(cardBodyElement => {
-            let cardButtons = cardBodyElement.querySelector('.cardButtons');
-            if (cardButtons && cardBodyElement !== selectedCard) {
-              let otherCardButtons = cardButtons.querySelectorAll('button');
-      
+    
+    
+        // let cardBody = document.querySelectorAll('.card-body');
+ 
+      if (clickedElement.classList.contains("seeFullText")) {
+        let selectedCard = clickedElement.closest('.card');
+        let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+    
+        // Iterate over each card in cardArray
+        cardArray.forEach(cardInfo => {
+          let cardElement = document.createElement('div'); // Create a temporary div element
+          cardElement.innerHTML = cardInfo; // Set its innerHTML to the card HTML string
+    
+          let cardBodyElement = cardElement.querySelector('.card-body'); 
+          let cardBodyText = cardElement.querySelector('.card-text')// Get the card body
+          cardBodyText.style.overflow = "hidden";
+          cardBodyText.style.height = "100px";
+    
+          if (cardBodyElement && cardElement !== selectedCard) { // Check if it's not the selected card
+            let cardButtons = cardBodyElement.querySelector('.cardButtons'); // Get card buttons
+            if (cardButtons) {
+              let otherCardButtons = cardButtons.querySelectorAll('button'); // Get other card buttons
+    
               // Check for matching buttons
               let hasMatch = Array.from(otherCardButtons).some(otherButton => 
                 Array.from(selectedCardButtons).some(selectedButton =>
                   otherButton.textContent === selectedButton.textContent
                 )
               );
-      
+    
               if (hasMatch) {
-                matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML);
+                matchedCardsSet.add(cardElement.outerHTML); // Add the card to matchedCardsSet
               }
             }
-          });
-      
-          // Remove the selected card from the matched cards set
-          matchedCardsSet.delete(selectedCard.outerHTML);
-      
-          // Convert the Set to an array and log the matching cards
-          let matchedCardsArray = Array.from(matchedCardsSet);
-      
-          // Log matching cards
-          if (matchedCardsArray.length > 0) {
-            localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
           }
-      
-          localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
-        }
-      });
+        });
+    
+        // Remove the selected card from matchedCardsSet
+        matchedCardsSet.delete(selectedCard.outerHTML);
+    
+        // Convert the Set to an array and store in localStorage
+        let matchedCardsArray = Array.from(matchedCardsSet);
+        localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
+        
+        localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
+        console.log(selectedCard.outerHTML);
+      }
+    });
+    
+});
 
 
-
-
-
-  });
+  // document.addEventListener('click', function(event) {
+  //   const clickedElement = event.target;
   
+  //   if (clickedElement.classList.contains("seeFullText")) {
+  //     let selectedCard = clickedElement.closest('.card');
+  //     let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
+  
+  //     let cardBody = document.querySelectorAll('.card-body');
+  
+  //     let matchedCardsSet = new Set();
+  
+  //     cardBody.forEach(cardBodyElement => {
+  //       let cardButtons = cardBodyElement.querySelector('.cardButtons');
+  //       if (cardButtons && cardBodyElement !== selectedCard) {
+  //         let otherCardButtons = cardButtons.querySelectorAll('button');
+  
+  //         // Check for matching buttons
+  //         let hasMatch = Array.from(otherCardButtons).some(otherButton => 
+  //           Array.from(selectedCardButtons).some(selectedButton =>
+  //             otherButton.textContent === selectedButton.textContent
+  //           )
+  //         );
+  
+  //         if (hasMatch) {
+  //           matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML);
+  //         }
+  //       }
+  //     });
+  
+  //     // Remove the selected card from the matched cards set
+  //     matchedCardsSet.delete(selectedCard.outerHTML);
+  
+  //     // Convert the Set to an array and log the matching cards
+  //     let matchedCardsArray = Array.from(matchedCardsSet);
+  
+  //     // Log matching cards
+  //     if (matchedCardsArray.length > 0) {
+  //       localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
+  //     }
+  
+  //     localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
+  //   console.log(selectedCard.outerHTML)
+  // }
+  // });
