@@ -332,7 +332,7 @@ justify-content: space-between;
         color: rgba(64, 64, 73, 1)
     }
 
-    .similarContent > .card > .card-body > .card-text {
+    .similarContent  .card  .card-body  .card-text {
         max-height: 3.5em;
         overflow: hidden;
         position: relative;

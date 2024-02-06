@@ -122,28 +122,21 @@ console.log(matchedCards)
       let matchedCardsSet = new Set(); // Initialize a Set to store matched cards
       
       const clickedElement = event.target;
-
-
-      
     
-    
-        // let cardBody = document.querySelectorAll('.card-body');
- 
       if (clickedElement.classList.contains("seeFullText")) {
         let selectedCard = clickedElement.closest('.card');
         let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
     
         // Iterate over each card in cardArray
         cardArray.forEach(cardInfo => {
-          let cardElement = document.createElement('div'); // Create a temporary div element
-          cardElement.innerHTML = cardInfo; // Set its innerHTML to the card HTML string
+          let cardBodyElement = document.createElement('div'); // Create a temporary div element
+          cardBodyElement.innerHTML = cardInfo; // Set its innerHTML to the card HTML string
     
-          let cardBodyElement = cardElement.querySelector('.card-body'); 
-          let cardBodyText = cardElement.querySelector('.card-text')// Get the card body
-          cardBodyText.style.overflow = "hidden";
-          cardBodyText.style.height = "100px";
+          let cardTextElement = cardBodyElement.querySelector('.card-text'); 
+          cardTextElement.style.overflow = "hidden";
+          cardTextElement.style.height = "100px";
     
-          if (cardBodyElement && cardElement !== selectedCard) { // Check if it's not the selected card
+          if (cardBodyElement !== selectedCard) { // Check if it's not the selected card
             let cardButtons = cardBodyElement.querySelector('.cardButtons'); // Get card buttons
             if (cardButtons) {
               let otherCardButtons = cardButtons.querySelectorAll('button'); // Get other card buttons
@@ -156,14 +149,11 @@ console.log(matchedCards)
               );
     
               if (hasMatch) {
-                matchedCardsSet.add(cardElement.outerHTML); // Add the card to matchedCardsSet
+                matchedCardsSet.add(cardInfo); // Add the card info to matchedCardsSet
               }
             }
           }
         });
-    
-        // Remove the selected card from matchedCardsSet
-        matchedCardsSet.delete(selectedCard.outerHTML);
     
         // Convert the Set to an array and store in localStorage
         let matchedCardsArray = Array.from(matchedCardsSet);
@@ -173,9 +163,7 @@ console.log(matchedCards)
         console.log(selectedCard.outerHTML);
       }
     });
-    
-});
-
+  })    
 
   // document.addEventListener('click', function(event) {
   //   const clickedElement = event.target;
