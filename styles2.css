@@ -8,66 +8,58 @@ body{
 }
 
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    border: 0 0 1px 0 ;
-    border-bottom: 1px solid #E4E3EB;
-    align-items: center;
-    padding: 0 76px;
-    /* position: fixed; */
-    width: 100%;
-    background-color: #ffff !important;
-    
+
+
+
+
+
+@media screen and(max-width: 768px) {
+    .leftArrow{
+        position: relative;
+        top: 50px !important;
+        left: 10px !important;
+        cursor: pointer;
+    }
+    /* .similarContent{
+        padding: 50px 0 !important;
+    }
+
+    .fullCard{
+        padding: 50px 10 !important;
+    } */
+
 }
 
-.logo{
-    width: 150px;
-    height: 24px;
-}
 
-
-
-.login{
-    padding: 10px 20px;
-    gap: 10px;
-    border-radius: 8px;
-    height: 40px;
-    background-color: #5D37F3;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-    border: none;
-    line-height: 20px;
-}
 
 .fullCard{
-    width: 100% !important;
+width: 100% !important;
 display: flex;
 justify-content: center !important;
 width: 70vw;
-/* height: 80vh; */
-/* overflow-x: hidden; */
-padding: 70px;
+padding: 10px;
 height: auto;
 }
 
 
 .fullCard .card{
 width: 70vw !important;
+height: auto !important;
+border: solid #bcb1b13c 1px;
 }
 
 .fullCard .card-img-top{
 width: 100%;
 height: 70vh;
+border-radius: 12px;
 }
 
-.fullCard > .card > .card-body {
+.fullCard  .card  .card-body {
     height: auto !important;
 }
 
-.fullCard > .card > .card-body .card-text {
+.fullCard  .card  .card-body .card-text {
+    height: auto !important;
     content: '';
 }
 
@@ -76,11 +68,11 @@ height: 70vh;
     height: 44px;
     background-color: #fff;
     border-radius: 100%;
-    /* padding: 3px; */
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
+    z-index: 1;
    
 }
 
@@ -101,17 +93,11 @@ height: 70vh;
     position: absolute;
 }
 
-
-
-@media screen and(max-width: 768px) {
-    .leftArrow{
-        position: relative;
-        top: 50px !important;
-        left: 10px !important;
-        cursor: pointer;
-    }
-
+.fullCard .card .card-body .seeFullText{
+    display: none;
 }
+
+
 .cardButtons{
     display: flex;
     flex-wrap: wrap;
@@ -149,10 +135,8 @@ justify-content: space-between;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    padding: 50px;
-    margin: 20px 30px;
+    padding: 10px;
 }
-
 
         .marketsel,
         .applsel,
@@ -177,41 +161,13 @@ justify-content: space-between;
         border: none;
       }
 
-
-      .fullCard > .card > .card-img-top {
-        max-width: 900px !important;
-        max-height: 600px !important;
-        border-radius: 12px;
-      }
-      .fullCard > .card{
-        max-width: 900px !important;
-        height: auto !important;
-        border: solid #bcb1b13c 1px;
-      }
-      .fullCard > .card > .card-body > .card-text{
-        height: auto !important;
-      }
-
-      .fullCard > .card > .card-body >.seeFullText{
-        display: none;
-    }
-
-
-
-
-
-
       .marketsel{
         background-color:rgba(255, 184, 47, 1);
-   
-       
        }
        
-
       .applsel{
         background: rgba(26, 199, 168, 1);
     }
-    
     
   .AIsel{
         background: rgba(183, 31, 221, 1);
@@ -229,84 +185,55 @@ justify-content: space-between;
     .figmasel{
         background: rgba(26, 199, 168, 1)
     }
-.blogTitle{
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 72px;
-    letter-spacing: 0em;
-    text-align: left;
+
     
-    }
-    
-    
-    .coverImg{
-    width: 624px;
-    height: 200px;
-    top: 144px;
-    left: 740px;
-    }
-    
-    .errmsg{
-        visibility: hidden;
-        font-size: 12px;
-        line-height: 20px;
-        color:rgba(234, 25, 25, 1);
-        display: flex;
-        align-items: center;
-        margin-top: 8px;
-    }
-    
-    .warningicon{
-        margin-right: 8px;
-    }
-    
-    .card-body{
+   
+   
+    .similarContent .card .card-body{
         padding-left: 0 !important;
         padding-right: 0 !important;
-        padding: 10px !important;
+        
     }
     
-    .card{
+    .similarContent .card{
         border: none !important;
         margin-bottom:56px ;
         border: solid #bcb1b13c 1px !important;
-        /* padding: 10px; */
-    }
+        padding: 10px;
+         }
     
-    .card-title{
+    .similarContent .card .card-body .title{
         font-weight: 500;
         font-size: 16px;
         line-height: 20px;
     }
     
-    .published{
+    .similarContent .card .card-body .published{
         font-weight: 400;
         font-size: 12px;
         line-height: 16px;
         color: rgba(133, 133, 141, 1);
     }
     
-    .title{
+    /* .title{
         font-weight: 500;
         font-size: 20px;
         line-height: 28px;
-    }
+    } */
     
-    .card-text{
+    .similarContent .card .card-body .card-text{
         font-weight: 400;
         font-size: 16px;
         line-height: 28px;
         color: rgba(64, 64, 73, 1)
     }
     
-    .cardsSection{
-        padding: 64px 76px;
-    }
+ 
     
     .col{
         display: flex;
         justify-content: center;
-    }
+     }
     
 
 .similarContent{
@@ -317,22 +244,15 @@ justify-content: space-between;
     height: auto !important;
 }
 
+/* .similarContent .card{
+    margin: 50px ;
+} */
 
-
-.similarContent .card{
-    /* width: calc((100% - 96px)/3); 3 cards in a row */
-
-    margin: 50px !important;
-}
-
-    .similarContent > .card > .card-body >.card-text{
+    .similarContent  .card  .card-body  .card-text {
         font-weight: 400;
         font-size: 16px;
         line-height: 28px;
-        color: rgba(64, 64, 73, 1)
-    }
-
-    .similarContent  .card  .card-body  .card-text {
+        color: rgba(64, 64, 73, 1);
         max-height: 3.5em;
         overflow: hidden;
         position: relative;
@@ -346,4 +266,9 @@ justify-content: space-between;
         bottom: 0;
         right: 0;
         background-color: white; 
+      }
+
+      .container-fluid{
+        display: flex;
+        justify-content: center;
       }

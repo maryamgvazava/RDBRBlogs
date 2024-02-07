@@ -1,11 +1,9 @@
 let fullCard = document.querySelector('.fullCard')
-
 let header = document.querySelector('.header')
 let leftArrow = document.querySelector('.leftArrow');
 let nextBtn = document.querySelector('.nextBtn')
 
 document.addEventListener('DOMContentLoaded', function() {
-
   leftArrow.addEventListener("click", function(){
     window.location.href = 'index.html';
 
@@ -15,32 +13,6 @@ let newCard = JSON.parse(localStorage.getItem('ThisCard')) || [];
 fullCard.innerHTML = newCard;
 
     
-
-
-    // localStorage.clear()
-
-// let headerSection = JSON.parse(localStorage.getItem('header')) || [];
-// header.innerHTML = headerSection
-
-// localStorage.clear()
-// let similarContent = document.querySelector('.similarContent');
-// let similarContentCards = similarContent.querySelectorAll('.card');
-// console.log(similarContentCards)
-
-
-// let matchedCards = JSON.parse(localStorage.getItem('matchedCards')) || [];
-// similarContent.innerHTML = matchedCards.join('');
-
-
-
-// for (let i = 0; i < matchedCards.length; i++){
-  
-//     nextBtn.addEventListener('click', function(){
-
-//     })
-
-// }
-
 
     // Retrieve matched cards from localStorage
 let matchedCards = JSON.parse(localStorage.getItem('matchedCards')) || [];
@@ -104,18 +76,6 @@ console.log(matchedCards)
     });
 
 
-
-
-
-
-    
-   
-
-   
-
-    
-
-
     document.addEventListener('click', function(event) {
       const existingCards = JSON.parse(localStorage.getItem('cards')) || [];
       let cardArray = existingCards.slice();
@@ -165,47 +125,4 @@ console.log(matchedCards)
     });
   })    
 
-  // document.addEventListener('click', function(event) {
-  //   const clickedElement = event.target;
   
-  //   if (clickedElement.classList.contains("seeFullText")) {
-  //     let selectedCard = clickedElement.closest('.card');
-  //     let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button');
-  
-  //     let cardBody = document.querySelectorAll('.card-body');
-  
-  //     let matchedCardsSet = new Set();
-  
-  //     cardBody.forEach(cardBodyElement => {
-  //       let cardButtons = cardBodyElement.querySelector('.cardButtons');
-  //       if (cardButtons && cardBodyElement !== selectedCard) {
-  //         let otherCardButtons = cardButtons.querySelectorAll('button');
-  
-  //         // Check for matching buttons
-  //         let hasMatch = Array.from(otherCardButtons).some(otherButton => 
-  //           Array.from(selectedCardButtons).some(selectedButton =>
-  //             otherButton.textContent === selectedButton.textContent
-  //           )
-  //         );
-  
-  //         if (hasMatch) {
-  //           matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML);
-  //         }
-  //       }
-  //     });
-  
-  //     // Remove the selected card from the matched cards set
-  //     matchedCardsSet.delete(selectedCard.outerHTML);
-  
-  //     // Convert the Set to an array and log the matching cards
-  //     let matchedCardsArray = Array.from(matchedCardsSet);
-  
-  //     // Log matching cards
-  //     if (matchedCardsArray.length > 0) {
-  //       localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
-  //     }
-  
-  //     localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
-  //   console.log(selectedCard.outerHTML)
-  // }
-  // });

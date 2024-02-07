@@ -11,9 +11,9 @@ const header = document.querySelector('.header')
 const coverSection = document.querySelector('.coverSection')
 const sortBtnsSec = document.querySelector('.sortBtnsSec')
 const cardsSection = document.querySelector('.cardsSection')
-const test = document.querySelector('.test')
 const enterBlogBtn = document.querySelector('.enterBlogBtn')
-
+const cardRows = document.querySelector('.cardRows');
+const sortBtnsDiv = document.querySelector('.sortBtnsDiv');
 
 
 let backgroundTransparency = function(color){
@@ -103,66 +103,8 @@ emailInput.addEventListener('input', (event ) =>{
   console.log(JSON.stringify(requestData.email))
   })
 
-  // blogs
-
-// // localStorage.clear()
-
-// let sortBtnsDiv = document.querySelector('.sortBtnsDiv')
-// let sortBtnsDivbtn = sortBtnsDiv.querySelectorAll('button')
-
-// console.log(sortBtnsDivbtn)
-
-// for (let btn of sortBtnsDivbtn){
-//   console.log(btn)
-//   btn.addEventListener("click", function(){
-//       console.log(this.textContent)
-
-//     let eachCardsbtn = cardArray.forEach( btn => {
-
-//     let x = btn.querySelector('.card-body')
-//       console.log(btn)
-//     })
-
-//     // console.log(eachCardsbtn)
-//   })
-// }
-
-
-
-
-
-
-
-
-
-
-let cardRows = document.querySelector('.cardRows')
-
-
-const existingCards = JSON.parse(localStorage.getItem('cards')) || [];
-let cardArray = existingCards.slice();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
-  const sortBtnsDiv = document.querySelector('.sortBtnsDiv');
-  const cardRows = document.querySelector('.cardRows');
-
   // Add click event listeners to each button
   sortBtnsDiv.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', function() {
@@ -194,32 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function renderCards() {
-  cardRows.innerHTML = '';
-  cardArray.forEach(cardInfo => {
-    cardRows.innerHTML += cardInfo;
-  });
-}
-
-renderCards();
-
 
 
 
@@ -268,15 +184,27 @@ document.addEventListener('click', function(event) {
 }
 });
 
-
-// publishBtn.addEventListener("click", function(){
-//   window.location.href = 'index.html';
-
-// })
-
-
-
-
 localStorage.setItem('header', JSON.stringify(header.outerHTML)); //ჰედერის სექცია შეინახოს ლოკალურ მეხსიერებაში
+
+
+
+
+
+
+
+
+
+
+const existingCards = JSON.parse(localStorage.getItem('cards')) || [];
+let cardArray = existingCards.slice();
+
+function renderCards() {
+  cardRows.innerHTML = '';
+  cardArray.forEach(cardInfo => {
+    cardRows.innerHTML += cardInfo;
+  });
+}
+
+renderCards();
 
 // localStorage.clear()

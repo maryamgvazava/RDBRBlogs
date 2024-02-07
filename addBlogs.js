@@ -1,20 +1,7 @@
  // blogs
-
-
  const login = document.querySelector('.login');
- const signInDiv = document.querySelector('.signInDiv')
  const crossmark = document.querySelectorAll(".crossmark");
- const emailInput = document.querySelector('.emailInput')
- const loginBtn = document.querySelector('.loginBtn');
- const errmsg = document.querySelector('.errmsg')
- const successDiv= document.querySelector('.successDiv');
- const ok = document.querySelector('.ok');
- const header = document.querySelector('.header')
- const coverSection = document.querySelector('.coverSection')
- const sortBtnsSec = document.querySelector('.sortBtnsSec')
- const cardsSection = document.querySelector('.cardsSection')
  const test = document.querySelector('.test')
- const enterBlogBtn = document.querySelector('.enterBlogBtn')
  
 
   // validation form for blog upload
@@ -24,7 +11,6 @@
   const cardHeader = document.getElementById('cardHeader');
   const enterDescr = document.getElementById('enterDescr');
   const publDate = document.getElementById('publDate');
-  const cathegory = document.getElementById('cathegory');
   const uploademail = document.getElementById('uploademail');
   const publishBtn = document.getElementById('publishBtn');
   let cardRows = document.querySelector('.cardRows')
@@ -36,21 +22,25 @@
   const mailCheck = document.querySelector('.restr6');
   const focussTyle = document.querySelectorAll('.focussTyle')
   const uploadImgDiv  = document.querySelector('.uploadImgDiv ');
-  const div = document.querySelector('#div')
   let btnssdiv2 = document.querySelector('.sortBtnsDiv2')
+
+
+// buttons addition
+ 
+const downarrow = document.getElementById('downarrow')
+const btns = document.querySelector('.btns')
+const sortBtnsDivsel = document.querySelector('.sortBtnsDivsel')
+const sortBtnsDivselbtn = sortBtnsDivsel.querySelectorAll('button')
+
   
   // uploadImg section
   
-  let selectedFile = myImageInput.files[0];
+  let selectedFile;
   const imgName = document.querySelector('.imgName');
   const uploadIMGsection = document.querySelector('.uploadIMGsection')
   
-  
-  
   document.addEventListener('DOMContentLoaded', function() {
-    const myImageInput = document.getElementById('myImageInput');
-    const imageFileLink = document.getElementById('imageFileLink');
-  
+    
     myImageInput.addEventListener('change', function() {
        selectedFile = myImageInput.files[0];
       if (selectedFile) {
@@ -65,26 +55,23 @@
         };
         reader.readAsDataURL(selectedFile);
       }
-  
-        // console.log(selectedFile)
-    });
+      });
   
     imageFileLink.addEventListener('click', function(event) {
       event.preventDefault();
       myImageInput.click();
-    });
-  
-  
-  
-  
-  
+    });  
   });
   
   selectedFile = ''
+
+
+
   
   // input restriction checks
   
   let blogFormValidation = function(inputType, minLengthWarning, noSpaceWarning, regexWarning) {
+
     inputType.addEventListener('input', function() {
       const inputValue = inputType.value;
       const regex = /^[\u10A0-\u10FF]+(?: [\u10A0-\u10FF]+)*$/;
@@ -132,42 +119,12 @@
   
   })
   
-  
-
-
 
 
   
-  
-  
-  // buttons addition
-  
-  const market = document.querySelector('.marketsel')
-  const appl = document.querySelector('.applsel')
-  const AI = document.querySelector('.AIsel')
-  const UI = document.querySelector('.UIsel')
-  const research = document.querySelector('.researchsel')
-  const figma = document.querySelector('.figmasel')
-  const choosecategory = document.querySelector('.choosecategory')
-    const btnCollection = document.getElementById('buttonCollection') 
-    const downarrow = document.getElementById('downarrow')
-  const whitecross = document.querySelectorAll('.whitecross')
-  const crossmarkBtnSelect = document.querySelectorAll('.crossmarkBtnSelect')
-  const btns = document.querySelector('.btns')
-  const addCardsButtons = document.querySelector('.addCardsButtons')
-  
-    const sortBtnsDivsel = document.querySelector('.sortBtnsDivsel')
-    const sortBtnsDivselbtn = sortBtnsDivsel.querySelectorAll('button')
     
-  
-
-    
-     
+   
   document.addEventListener('DOMContentLoaded', function () {
-
-
-
-
     function checkFields() {
       // Check if all input fields have values
       const allFieldsFilled = author.value.trim() !== '' &&
@@ -272,8 +229,6 @@ checkFields();
     return matchedButtons;
   
   }
-console.log(btnssdiv2)
-
     
       function clearFields() {
           author.value = '';
