@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box !important;
+}
+
 /* regform */
 .regFormSection{
     display: flex;
@@ -40,6 +44,10 @@ flex-direction: column;
 align-items: center;
 
 }
+
+
+
+
 
 .uploadIMGsection{
     display: flex;
@@ -356,4 +364,48 @@ align-self: right;
             display: flex;
             height: auto;
             flex-wrap: wrap;
+        }
+
+
+        @media screen and (max-width:770px){
+            body{
+                overflow-x:hidden !important ;
+            }
+            .descriptionBox, .regForm{
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 10px;
+                margin: 0;
+            }
+        
+            .publishBtnDiv{
+                width: 100vw !important;
+                display: flex !important;
+                justify-content: center !important;
+                margin: 10px 0;
+            }
+        
+            .uploadIMGsection{
+                font-size: 10px !important;
+            }
+        
+            .focussTyle, .cathegoryDiv,.uploadImgDiv, .cathegory, .publishBtnDiv, .choosecategory {
+                max-width: 248px !important;
+                box-sizing: border-box !important;
+                margin: 10px;
+            }
+        
+            #cathegory{
+               width: 100% !important
+            }
+            .regForm, .col-sm-12, .descriptionBox, .DateSecsmallviewport, .publisDateSec{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        
+            .addBlog{
+                margin: 10px;
+            }
         }

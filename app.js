@@ -88,6 +88,8 @@ loginBtn.addEventListener('click', event => {
 });
 
 
+
+
 emailInput.addEventListener('input', (event ) =>{
     event.preventDefault()
     const requestData = { email: emailInput.value }; 
@@ -108,15 +110,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add click event listeners to each button
   sortBtnsDiv.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', function() {
-      const clickedBtnText = this.textContent.trim();
-      const cardColumns = cardRows.querySelectorAll('.col-lg-4');
+      const clickedBtnText = this.textContent.trim(); //define clicked button's textContent
+      const cardColumns = cardRows.querySelectorAll('.col-lg-4'); //define each col where cards are located
 
       // Loop through each card column
       cardColumns.forEach(cardColumn => {
-        const cardBtns = cardColumn.querySelectorAll('.cardButtons button');
+        //select all buttons of each cards
+        const cardBtns = cardColumn.querySelectorAll('.cardButtons button'); 
         let found = false;
 
-        // Loop through each button within the card column
+        // Loop through each button within the card column and define textContents
         cardBtns.forEach(cardBtn => {
           const cardBtnText = cardBtn.textContent.trim();
           
@@ -127,6 +130,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // If a match is found, move the card column to the beginning
+
+
+        
+    // The order-first class is a utility class 
+    //typically used in CSS frameworks like Bootstrap to 
+    //control the order of flex items within a flex container.
+
+    // When you add the order-first class to an element, 
+    //it changes its order in the flex container so that it appears first visually,
+    // regardless of its position in the HTML source order.
+
         if (found) {
           cardColumn.classList.add('order-first');
         } else {
@@ -143,48 +157,62 @@ document.addEventListener('click', function(event) {
   const clickedElement = event.target;
 
   if (clickedElement.classList.contains("seeFullText")) {
-    let selectedCard = clickedElement.closest('.card'); // იმ ელემენტის ქარდი, რომელზეც ხდება კლიკი
-    let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button'); //იმ ქარდის ღილაები, რომელიც ავირჩიე
+    // the .card element of the clicked element
+    let selectedCard = clickedElement.closest('.card'); 
+    //buttons of the .card element, on which the click was made
+    let selectedCardButtons = selectedCard.querySelectorAll('.cardButtons button'); 
+    //select all card-body of all .card elements
+    let cardBody = document.querySelectorAll('.card-body'); 
 
-    let cardBody = document.querySelectorAll('.card-body');  //ყველა ქარდის body
 
-    let matchedCardsSet = new Set();  //
+    //creating a Set() method to omit the duplicated ones;
+    let matchedCardsSet = new Set(); 
 
+
+      //loop through  each card-body and compare with the selected one:
     cardBody.forEach(cardBodyElement => {
-      let cardButtons = cardBodyElement.querySelector('.cardButtons'); //ყველა ქარდის ბოდიში არსებული ღილაკების div
-      if (cardButtons && cardBodyElement !== selectedCard) {  //თუ ყველა ქარდის ბოდიში არსებული ღილაკები და ყველა ქარდის body არ უდრის არჩეულ ქარდს
-        let otherCardButtons = cardButtons.querySelectorAll('button'); //ყველა ქარდის ბოდიში არსებული ღილაკების div-ში არსებული ღილაკები
+     //selecting .cardbuttons - 'div' where the buttons are located
+      let cardButtons = cardBodyElement.querySelector('.cardButtons'); 
 
-        // Check for matching buttons
-        let hasMatch = Array.from(otherCardButtons).some(otherButton =>  //ყველა ღილაკების დივში არსებული ღილაკები
-          Array.from(selectedCardButtons).some(selectedButton => //იმ ქარდების ღილაკები რომელიც ავირჩიე
-            otherButton.textContent === selectedButton.textContent //თუ ემთხვევა ერთმანეთს
+      //comparing: if .cardbuttons - 'div' where the buttons are located and 
+      //each .card-body of the .card element is not equal to .card itself
+      if (cardButtons && cardBodyElement !== selectedCard) {  
+
+        //selecting all buttons, located in the cards (in .cardButtons' div)
+        let otherCardButtons = cardButtons.querySelectorAll('button'); 
+
+        // Check for matching buttons - if any of all the .card's buttons textContents 
+        //are match to the selected button
+        let hasMatch = Array.from(otherCardButtons).some(otherButton =>  
+          Array.from(selectedCardButtons).some(selectedButton => 
+            otherButton.textContent === selectedButton.textContent 
           )
         );
 
+
         if (hasMatch) {
-          matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML); //მაშინ დაამატოს უახლოესი ქარდ ელემენტი matchedCardsSet-ში
+          // if there is any match, add matched button's card to the set
+          matchedCardsSet.add(cardBodyElement.closest('.card').outerHTML); 
         }
       }
     });
 
     // Remove the selected card from the matched cards set
-    matchedCardsSet.delete(selectedCard.outerHTML); //matchedCardsSet -დანნ წაშალოს არჩეული ქარდის კოპი
+    matchedCardsSet.delete(selectedCard.outerHTML);
 
     // Convert the Set to an array and log the matching cards
-    let matchedCardsArray = Array.from(matchedCardsSet); // და სეთი გადააკეთოს მასივად
+    let matchedCardsArray = Array.from(matchedCardsSet); 
 
-    // Log matching cards
+    // and if there is at least one, save it to the local Storage
     if (matchedCardsArray.length > 0) {
-      localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray)); // და მასივი შეინახოს ლოკალურ მეხსიერებაში. 
+      localStorage.setItem('matchedCards', JSON.stringify(matchedCardsArray));
     }
-
-    localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML)); //არჩეული ქარდი შეინახოს ლოკალურ მეხსიერებაში
+    //save selected card to the local Storage
+    localStorage.setItem('ThisCard', JSON.stringify(selectedCard.outerHTML));
   
 }
 });
 
-localStorage.setItem('header', JSON.stringify(header.outerHTML)); //ჰედერის სექცია შეინახოს ლოკალურ მეხსიერებაში
 
 
 
